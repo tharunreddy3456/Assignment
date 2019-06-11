@@ -1,13 +1,19 @@
 Prerequisite:
 1- Install JDK
+
 2- Install Android SDK
+
 3- Intstall Eclipse
+
 4-Intsall TestNG Plugin for Eclipse
+
 5- Selenium server Jar (Already Present in the Project)
+
 6- Install Appium Desktop
 
 
-Steps To Follow:
+
+*******************Steps To Follow:*******************************
 1-	Set JAVA_HOME in Environment Variables.  Sample: C:\Program Files\Java\jdk1.8.0_161 
 
 2-	Download and install Android Studio, if you want to use Emulators, in this test I have used real device.
