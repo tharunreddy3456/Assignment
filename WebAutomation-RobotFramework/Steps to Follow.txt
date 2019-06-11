@@ -1,0 +1,40 @@
+1. Install python from below url
+https://www.python.org/downloads/
+
+2. Add python folder and python script path in environmental variables.
+
+3. From Command prompt run the below command
+   -- pip install robotframework
+	
+4. Install WxPython of your windows version
+https://sourceforge.net/projects/wxpython/files/
+https://sourceforge.net/projects/wxpython/files/wxPython/3.0.2.0/wxPython3.0-win64-3.0.2.0-py27.exe/download
+
+or you can run below command to install WxPython
+  -- pip install -U wxPython
+
+5. Install ride from command prompt with below command
+  -- pip install robotframework-ride
+
+6. Install Selenium Library from command prompt with below command
+  -- pip install robotframework-seleniumlibrary
+
+7. Install Requests Library with below command 
+  -- pip install robotframework-requests
+
+8. Launch ride tool via command prompt with below command
+  -- ride.py
+
+9. Verify your Chrome browser version and download the relavent chrome driver and copy the driver in python/script folder.
+  
+10. Create a testcase in ride tool and copy the script shared in "PythonScript.Txt" under TextEdit and select the test case and click on Run.
+Note: Please click on Continue if the script execution is Paused, this usually happens when the ride tool is not installed properly.
+
+11. Once the test case has been run successfully log.html and report.html file path will be generated in Execution status.
+
+12. Now naviagete to log.html location and here you can find all the extracted links in output file.
+
+13. If, there are any broken links you can see those in log.html file
+
+14. As of now there are no broken links in Touchtunes page.
+   

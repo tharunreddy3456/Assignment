@@ -1,0 +1,43 @@
+*** Settings ***
+Library           SeleniumLibrary
+Library           String
+Library           RequestsLibrary
+Library           OperatingSystem
+
+*** Test Cases ***
+Extract all Elements
+    #Delete existing file
+    ${isFileExist}    Run keyword And Return Status    File Should Exist    ${OUTPUT_DIR}\\output.txt
+    Run keyword if    ${isFileExist}    Remove File    ${OUTPUT_DIR}\\output.txt
+    Create File    ${OUTPUT_DIR}\\output.txt
+    #Open chrome
+    open browser    http://www.touchtunes.com/about/press    Chrome
+    Maximize Browser windowinputch
+    Wait Until Element Is Visible    //h3[text()='Press']    20s
+    #Get all links elements
+    @{links}    Get WebElements    //a[contains(@href,'touchtunes')]
+    : FOR    ${eachLink}    IN    @{links}
+    \    comment    #Get URL of Link
+    \    ${url}    Get Element Attribute    ${eachLink}    href
+    \    Comment    #Add URL to outputfile
+    \    Append To File    ${OUTPUT_DIR}\\output.txt    ${url}\n
+    \    @{host}    Split String    ${url}    /
+    \    ${i}    Get Length    @{host}[0]
+    \    ${j}    Get Length    @{host}[2]
+    \    ${start index}    Evaluate    ${i}+${j}+2
+    \    ${host}    Get Substring    ${url}    0    ${start index}
+    \    Comment    #create session to host
+    \    Create Session    temp    ${host}
+    \    ${url}    Get Substring    ${url}    ${start index}
+    \    Comment    #send get request
+    \    ${resp}=    Get Request    temp    ${url}
+    \    comment    #verify response code
+    \    Run Keyword Unless    '${resp.status_code}'=='200'    log    ${url}
+
+Search TouchTunes
+    open browser    https://www.google.com    chrome
+    Maximize Browser Window
+    Wait Until Element Is Visible    name=q
+    Input Text    name=q    touchtunes
+    press key    name=q    \\13
+    Wait Until Element Is Visible    //a[@href="https://www.touchtunes.com/"]    15s
