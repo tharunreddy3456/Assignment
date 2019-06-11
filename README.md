@@ -27,3 +27,5 @@ PlaySong Script:
 
  
 13-	Now select Run As > TestNG Suite. This should start running the script one by one.
+
+For Details instruction Please read the Installation.docx.
